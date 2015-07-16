@@ -65,7 +65,7 @@ var battleships = (function(){
     }
 
     function checkShips(player){
-        return player.ships > 0 ? true : false;
+        return player.ships > 0;
     }
 
     //Game map generations
