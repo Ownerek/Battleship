@@ -3,7 +3,7 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
+//@import "compass/reset";
 
 *{
   margin:0;
@@ -22,12 +22,25 @@ body{
 }
 
 .pl_left, .pl_right{
-  float:left;
   width: 45%;
-  height:900px;
+  height:1100px;
 }
 
-.player, .enemypl_1, .enemypl_2{
+.pl_left{
+  float:left;
+}
+
+.pl_right{
+  float:right;
+}
+
+.player{
+  margin:25px;
+  width:400px;
+  height:400px;
+}
+
+.enemy{
   margin:25px;
   width:400px;
   height:400px;
