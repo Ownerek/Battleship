@@ -1,0 +1,42 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font:16px Helvetica;
+}
+
+.container{
+  height:1200px;
+  width:1200px;
+  border: 2px solid black;
+}
+
+.pl_left, .pl_right{
+  float:left;
+  width: 45%;
+  height:900px;
+}
+
+.player, .enemypl_1, .enemypl_2{
+  margin:25px;
+  width:400px;
+  height:400px;
+}
+
+.field{
+  float:left;
+  width:38px;
+  height:38px;
+  margin:1px;
+  border:1px dashed darkgreen;
+}
