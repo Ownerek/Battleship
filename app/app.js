@@ -5,14 +5,16 @@ var battleships = (function(){
     //create player maps
     var player1 = {
         map : new GenerateRoom(10, 10, '1', false),
-        name: "Matt",
+        name: "pl_1",
         shoot : shoot,
+        ships : 0,
         canShoot : true
     };
     var player2 = {
         map : new GenerateRoom(10,10, '2', false),
-        name: "Patrick",
+        name: "pl_2",
         shoot : shoot,
+        ships : 0,
         canShoot : false
     };
     //create enemy map for players
@@ -31,6 +33,8 @@ var battleships = (function(){
         } else{
            console.log(shooter + " missed the target");
         }
+        shooter.canShoot = false;
+        target.canShoot = true;
     }
 
 
@@ -52,9 +56,14 @@ var battleships = (function(){
                 room[i][j] = {
                     shipPresent: false
                 };
-                div.id = ene + "_" + i+1 + "x" + j+1;
+                div.id = ene + "_" + i + "x" + j;
                 div.className = 'field';
-                addListener(div);
+                if(enemy){
+                    addListener(div);
+
+                } else{
+                    addShip(div);
+                }
                 map.appendChild(div);
             }
             room.push([]);
@@ -64,8 +73,37 @@ var battleships = (function(){
     //add click event listener function
     function addListener(element){
         element.addEventListener('click', function(){
-
             element.style.backgroundColor = 'red';
+            this.removeEventListener('click', arguments.callee);
+            console.log('clicked on: ' + element.id);
+        })
+    }
+
+    function addShip(element){
+        element.addEventListener('click', function(){
+            var player = element.parentNode.className;
+
+            if(player === player1.name){
+                if(player1.ships < 15){
+                    player1.ships++;
+                    console.log(player1.name + " has: " + player1.ships);
+                } else{
+                    console.log("Maximum ships reached");
+                }
+            } else{
+                if(player2.ships < 15){
+                    player2.ships++;
+                    console.log(player2.name + " has: " + player2.ships);
+                } else{
+                    console.log("Maximum ships reached");
+                }
+            }
+
+            element.style.backgroundColor = 'blue';
+            this.removeEventListener('click', arguments.callee);
+            console.log('clicked on: ' + element.id);
+
+
         })
     }
 
